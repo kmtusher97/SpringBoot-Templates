@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee | Info</title>
+</head>
+<body>
+  <div>
+    <h1>Employee Detail</h1>
+
+    <table border="1">
+      <thead>
+        <!-- <th>ID</th> -->
+        <th>Name</th>
+        <th>Department</th>
+        <th>Phone</th>
+        <th>Actions</th>
+      </thead>
+
+      <tbody>
+        <tr th:each="emplist:${employeeInfoList}">
+          <!-- <td th:text="${{emplist.id}}"></td> -->
+          <td th:text="${{emplist.name}}"></td>
+          <td th:text="${{emplist.department}}"></td>
+          <td th:text="${{emplist.mobileno}}"></td>
+          <td>
+            <a th:href="@{/update/{id} (id=${emplist.id})}" role="button">Update</a>
+            <a th:href="@{/delete/{id} (id=${emplist.id})}" role="button">Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a th:href="@{/add}" role="button">Add Employee</a>
+  </div>
+</body>
+</html>
