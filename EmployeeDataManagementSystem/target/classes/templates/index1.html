@@ -1,36 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
   <title>Employee | Info</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <div>
-    <h1>Employee Detail</h1>
+  <div class="container well">
+    <nav class="navbar">                   <!-- Navigation Bar -->
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <h1>Employee <strong>Detail</strong></h1>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a th:href="@{/add}" role="button" class="btn btn-info"> <!-- /add is the url for Edit_form.html -->
+              <span class="badge">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </span>
+              <strong>Add Employee</strong>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-    <table border="1">
+    <table class="table table-hover">
       <thead>
-        <!-- <th>ID</th> -->
-        <th>Name</th>
-        <th>Department</th>
-        <th>Phone</th>
-        <th>Actions</th>
+      <!-- <th>ID</th> -->
+      <th>Name</th>
+      <th>Department</th>
+      <th>Phone</th>
+      <th>Actions</th>
       </thead>
 
       <tbody>
-        <tr th:each="emplist:${employeeInfoList}">
-          <!-- <td th:text="${{emplist.id}}"></td> -->
-          <td th:text="${{emplist.name}}"></td>
-          <td th:text="${{emplist.department}}"></td>
-          <td th:text="${{emplist.mobileno}}"></td>
-          <td>
-            <a th:href="@{/update/{id} (id=${emplist.id})}" role="button">Update</a>
-            <a th:href="@{/delete/{id} (id=${emplist.id})}" role="button">Delete</a>
-          </td>
-        </tr>
+      <tr th:each="emplist:${employeeInfoList}">   <!-- entity object -->
+        <td th:text="${{emplist.name}}"></td>
+        <td th:text="${{emplist.department}}"></td>
+        <td th:text="${{emplist.mobileno}}"></td>
+        <td>
+          <a th:href="@{/update/{id} (id=${emplist.id})}" role="button" class="btn btn-info">
+            <span class="glyphicon glyphicon-pencil"></span>              <!-- Update -->
+          </a>
+          <a th:href="@{/delete/{id} (id=${emplist.id})}" role="button" class="btn btn-danger">
+            <span class="glyphicon glyphicon-trash"></span>               <!-- Delete -->
+          </a>
+        </td>
+      </tr>
       </tbody>
     </table>
-    <a th:href="@{/add}" role="button">Add Employee</a>
   </div>
 </body>
 </html>
