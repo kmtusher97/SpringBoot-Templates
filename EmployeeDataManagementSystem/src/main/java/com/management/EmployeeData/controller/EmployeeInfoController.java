@@ -66,7 +66,7 @@ public class EmployeeInfoController {
 
   /* Clicking on the delete button in the right side of each row, deletes the row from the table */
   @RequestMapping( value = "/delete/{id}", method = RequestMethod.GET )
-  public ModelAndView deleteStudentInfo( @PathVariable("id") int id ) {
+  public ModelAndView deleteEmployeeInfo( @PathVariable("id") int id ) {
     employeeInfoService.deleteEmployeeInfo( id );                        // delete row having PRI key = id
     return new ModelAndView( "redirect:/all" );                // display the index1.html page
   }
