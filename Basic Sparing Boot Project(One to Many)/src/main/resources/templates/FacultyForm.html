@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Faculty Form</title>
+</head>
+<body>
+    <div>
+        <form th:action="@{/saveFaculty}" method="post">
+            <div>
+                <input type="text" placeholder="Faculty Id" th:field="${faculty.facultyId}">
+            </div>
+            <br><br>
+
+            <div>
+                <input type="text" placeholder="Faculty Name" th:field="${faculty.facultyName}">
+            </div>
+            <br><br>
+
+            <div>
+                <input type="text" placeholder="Faculty Code" th:field="${faculty.facultyCode}">
+            </div>
+            <br><br>
+
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

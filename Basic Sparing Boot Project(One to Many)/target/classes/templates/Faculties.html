@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Faculties</title>
+</head>
+<body>
+    <div>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>Faculty ID</th>
+                <th>Faculty Name</th>
+                <th>Faculty Code</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="faculty : ${faculties}">
+                <td th:text="${faculty.getFacultyId()}"></td>
+                <td th:text="${faculty.getFacultyName()}"></td>
+                <td th:text="${faculty.getFacultyCode()}"></td>
+                <td>
+                    <a th:href="@{'/edit/' + ${faculty.getFacultyId()}}">Edit</a>
+                    <a th:href="@{'/delete/' + ${faculty.getFacultyId()}}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="4">
+                    <a th:href="@{/addFaculty}" role="button">Add Faculty +</a>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+</html>
